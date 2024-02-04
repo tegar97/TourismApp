@@ -9,6 +9,8 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.tegar.tourismapp.databinding.ActivityMainBinding
+import com.tegar.tourismapp.favorite.FavoriteFragment
+import com.tegar.tourismapp.home.HomeFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding : ActivityMainBinding
