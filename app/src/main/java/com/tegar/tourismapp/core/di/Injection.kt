@@ -4,6 +4,7 @@ import com.tegar.tourismapp.core.data.TourismRepository
 import com.tegar.tourismapp.core.data.source.local.LocalDataSource
 import com.tegar.tourismapp.core.data.source.local.room.TourismDatabase
 import com.tegar.tourismapp.core.data.source.remote.RemoteDataSource
+import com.tegar.tourismapp.core.data.source.remote.network.ApiConfig
 import com.tegar.tourismapp.core.domain.repository.ITourismRepository
 import com.tegar.tourismapp.core.domain.usecase.TourismInteractor
 import com.tegar.tourismapp.core.domain.usecase.TourismUseCase
@@ -16,7 +17,7 @@ object Injection {
 
         val database = TourismDatabase.getInstance(context)
 
-        val remoteDataSource = RemoteDataSource.getInstance(JsonHelper(context))
+        val remoteDataSource = RemoteDataSource.getInstance(ApiConfig.provideApiService())
         val localDataSource = LocalDataSource.getInstance(database.tourismDao())
         val appExecutors = AppExecutors()
 
