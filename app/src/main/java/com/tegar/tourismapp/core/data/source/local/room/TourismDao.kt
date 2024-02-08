@@ -7,18 +7,19 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.tegar.tourismapp.core.data.source.local.entitiy.TourismEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TourismDao {
 
     @Query("SELECT * FROM tourism")
-    fun getAllTourism(): LiveData<List<TourismEntity>>
+    fun getAllTourism(): Flow<List<TourismEntity>>
 
     @Query("SELECT * FROM tourism where isFavorite = 1")
-    fun getFavoriteTourism(): LiveData<List<TourismEntity>>
+    fun getFavoriteTourism(): Flow<List<TourismEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTourism(tourism: List<TourismEntity>)
+    suspend fun insertTourism(tourism: List<TourismEntity>)
 
     @Update
     fun updateFavoriteTourism(tourism: TourismEntity)
